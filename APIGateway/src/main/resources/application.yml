@@ -1,0 +1,17 @@
+spring:
+  application:
+   name: APIGateway
+  cloud:
+    gateway:
+      routes:
+          - id: UserService
+            predicates:
+              - Path=/user/**
+            uri: http://localhost:8081
+          - id: AdminService
+            predicates:
+              - Path=/admin/**
+            uri: http://localhost:8082
+
+server:
+  port: 8083
